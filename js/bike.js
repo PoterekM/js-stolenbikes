@@ -1,27 +1,19 @@
-function BikeList() {
-  this.bikeArr = [];
+function BikeModule() {
 };
 
-BikeList.prototype.getBikes = function() {
-  $.get('https://bikeindex.org/api/v3/search?locations=' + manufacturer)
+BikeModule.prototype.getBikes = function(input, displayBikes) {
+  $.get('https://bikeindex.org/api/v3/search?manufacturer=' + input)
   .then(function(response) {
-    bikeReturn = response.bikes;
-    for (i = 0; i < bikeReturn.length; i++) {
-      this.bikeArr.push(bikeReturn[i]);
-    }
+    displayBikes(response.bikes);
   });
 };
 
-BikeList.prototype.displayBikes = function() {
-  for (i = 0; i < this.BikeArr.length; i++) {
-    var newBike = this.BikeArr[i];
-    var bikeTitle = newBike.title;
+// BikeModule.prototype.displayBikes = function() {
+//   for (i = 0; i < this.BikeArr.length; i++) {
+//     var newBike = this.BikeArr[i];
+//     var bikeTitle = newBike.title;
+//
+//   }
+// };
 
-  }
-};
-
-
-
-
-
-exports.bikeModule = Bike;
+exports.bikeModule = BikeModule;
